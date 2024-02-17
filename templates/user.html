@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %} WarmthConnect {% endblock %}
+{% block title %} User Profile {% endblock %}
 
 {% block content %}
-    <div>
-        <p>User Account Page or something like that here :3</p>
-    </div>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome, {{ user_name }}</h2>
+            <!-- Display other user information as needed -->
+            <p>Email: {{ user_email }}</p>
+            <p>Picture: <img src="{{ user_picture }}" alt="User Profile"></p>
+            <!-- Add more user information fields as needed -->
+        </section>
+    </main>
 {% endblock %}
