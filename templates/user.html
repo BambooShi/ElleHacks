@@ -20,6 +20,7 @@
             <a href="#contact">Contact</a>
             <a href="/logout">Logout</a>
         </div>
+        <div><pre>{{session.userinfo | tojson(indent=4)}}</pre></div>
     {% else %}
         <h1>Please login to access your account.</h1>
         <a href="/login" class="custom-button">Login</a>

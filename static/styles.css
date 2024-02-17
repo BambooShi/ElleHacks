@@ -53,6 +53,10 @@ input[type="submit"] {
     align-items:center;
 }
 
+main {
+    color: white;
+}
+
 .navbar {
     background-color: #bb672f; /* Set the background color of the navbar */
     overflow: hidden;
@@ -63,27 +67,50 @@ input[type="submit"] {
 .navbar a {
     float: left;
     display: block;
-    color: #644519; /* Set the text color of the links */
+    color: rgb(75, 26, 0); 
     text-align: center;
-    padding: 5px 6px;
+    padding: 14px 16px;
     text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 .navbar a:hover {
     background-color: #ffac2f; /* Set the background color on hover */
     color: rgb(75, 26, 0); /* Set the text color on hover */
+    padding: 14px 16px;
 }
 
-.button {
-    background-color: #bb672f;
-    color: #644519; /* White text color */
-    padding: 5px 6px; /* Padding around the text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-/* Change button color on hover */
-.button:hover {
-    background-color: #ffac2f;
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
 }
