@@ -2,23 +2,26 @@
 
 {% block title %} Browse {% endblock %}
 
-{% block navlinks %} 
-{% if session %}
-<a href="/">Home</a>
-<a href="#about">About</a>
-<a href="#browse">Browse</a>
-<a href="/account">Account</a>
-<a href="#contact">Contact</a>
-<a href="/logout">Logout</a>
-{% else %}
-<a href="/">Home</a>
-<a href="#about">About</a>
-<a href="#browse">Browse</a>
-<a href="#contact">Contact</a>
-<a href="/login">Login/Sign Up</a>
-{% endif %}
-{% endblock %}
-
 {% block content %}
-
+<div class="welcome">Welcome!<i id="page-logo" class="position-absolute fa-solid fa-carrot ms-2"></i></div>
+    <section class="search-area">
+        <!-- Input Ingredients -->
+        <div class="input-group search-form">
+            <label for="search" class="question-label">What type of clothings are you looking for?</label>
+            <br>
+            <input type="text" class="form-control rounded" name="search" id="search" placeholder="ex. socks">
+        </div>
+        <!-- CHIPS -->
+        <div id="chips">
+            <!-- chips are dynamically added through input.js-->
+            {% for i in ingredients%}  <!-- re-creates chips after page reset from post request--> 
+            <div class="chip">
+                <span>{{i}}</span>
+                <button class="chip-x" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
+            </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="submit" class="btn btn-primary mb-3">Find clothings!</button>
+    </section>
+</div>
 {% endblock %}
