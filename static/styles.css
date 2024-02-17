@@ -1,34 +1,75 @@
 html {overflow: -moz-scrollbars-vertical;}
 
-h1 {
+h1, h2, p, label, input {
     text-align: center;
 }
 
 body {
 	background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	color: black;
-    text-align: left;
-    max-width: 800px;
+    text-align: center;
+    align-items: center;
+    max-width: 80%; 
     margin: auto;
+    height: 100%;
 }
 
 div {
-    border: 1px solid grey;
     padding: 15px;
+    margin-bottom: 7px;
+}
+
+.group-label-input {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 10px;
-    border-radius: 5px;
 }
 
 label {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5px auto;
     font-weight: bold;
 }
 
 input[type="text"] {
     width: 100%;
+    align-items: center;
     box-sizing: border-box;
     padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 10px auto;
+    margin-bottom: 5px auto;
+}
+
+input[type="submit"] {
+    align-items:center;
+}
+
+.navbar {
+    background-color: #333; /* Set the background color of the navbar */
+    overflow: hidden;
+    border-color: black; 
+    border-radius: 5px;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2; /* Set the text color of the links */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd; /* Set the background color on hover */
+    color: black; /* Set the text color on hover */
 }
