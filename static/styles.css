@@ -66,6 +66,41 @@ input[type="submit"] {
   background-color: #62929E;
 }
 
+img{
+  max-width: 100%;
+  height: auto;
+  text-align: right;
+  display: block; 
+  margin: 0 auto;
+}
+
+/* Style for the custom file upload button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Style for the custom file upload button on hover */
+.custom-file-upload:hover {
+  background-color: #45a049;
+}
+
+.form-container {
+  flex: 3; /* Use flexbox to make the form container grow and take up remaining space */
+  padding: 20px; /* Optional: Add padding for spacing */
+}
+
+/* CSS for the image container */
+.image-container {
+  flex: 2; /* Use flexbox to make the image container grow and take up remaining space */
+  padding: 20px; /* Optional: Add padding for spacing */
+}
+
 .login-button {
   background-color: #ecece7;
   border: 2px solid #374b5c;

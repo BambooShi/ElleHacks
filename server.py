@@ -5,15 +5,18 @@ from urllib.parse import quote_plus, urlencode
 
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
-from flask import Flask, redirect, render_template, session, url_for, request
+from flask import Flask, redirect, render_template, session, url_for, request, send_from_directory
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
 
 app = Flask(__name__)
-app.config["IMAGE_UPLOADS"] = "C:/Flask/Upload/"
+# app.config["IMAGE_UPLOADS"] = "C:/Flask/Upload/"
 app.secret_key = env.get("APP_SECRET_KEY")
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 oauth = OAuth(app)
 
@@ -70,20 +73,36 @@ def logout():
         )
     )
 
-@app.route('/upload-image', methods=['GET', 'POST'])
-def upload_image():
-    if request.method == "POST":
-        if request.files:
-            image = request.files["image"]
-            image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
-            return render_template("upload_image.html", uploaded_image=image.filename)
-    return render_template("upload_image.html")
+# @app.route('/upload-image', methods=['GET', 'POST'])
+# def upload_image():
+#     if request.method == "POST":
+#         if request.files:
+#             image = request.files["image"]
+#             image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
+#             return render_template("upload_image.html", uploaded_image=image.filename)
+#     return render_template("upload_image.html")
 
+
+# @app.route('/uploads/<filename>')
+# def send_uploaded_file(filename=''):
+#     from flask import send_from_directory
+#     return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return 'No file part'
+    file = request.files['file']
+    if file.filename == '':
+        return 'No selected file'
+    if file:
+        # Save the uploaded file to the UPLOAD_FOLDER
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        return render_template('donate.html', filename=file.filename)
 
 @app.route('/uploads/<filename>')
-def send_uploaded_file(filename=''):
-    from flask import send_from_directory
-    return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
+def display_image(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=env.get("PORT", 3000))
