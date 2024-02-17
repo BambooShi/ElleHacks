@@ -13,8 +13,8 @@
             <div>
                 <label>Select image</label>
                 <div class="custom-file">
-                    <input type="file" name="image" id="image">
-                    <label for="image">Select image...</label>
+                    <input type="file" name="image" id="uploaded_image">
+                    <img src="{{ url_for('uploaded_image', filename=image) }}" />
                 </div>
             </div>
             <button type="submit" class="btn login-button">Submit Clothing</button>
