@@ -27,7 +27,7 @@ oauth.register(
 
 @app.route("/")
 def root():
-    return render_template("index.html", session=session.get('user'))
+    return render_template("base.html", session=session.get('user'))
 
 @app.route("/account")
 def account():
