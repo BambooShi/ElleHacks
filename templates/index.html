@@ -11,13 +11,14 @@
 <body>
     {% if session %}
         <h1>Welcome {{session.userinfo.name}}!</h1>
-        <p><a href="/logout">Logout</a></p>
         <div><pre>{{session.userinfo | tojson(indent=4)}}</pre></div>
         <div class="navbar">
-            <a href="#home">Home</a>
+            <a href="/">Home</a>
+            <a href="/account">account</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
+            <a href="/logout">Logout</a>
         </div>
     {% else %}
         <h1>Welcome Guest. Please login</h1>
