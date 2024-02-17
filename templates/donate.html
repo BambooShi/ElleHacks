@@ -5,23 +5,20 @@
 {% block content %}
 <div class="welcome">Welcome!<i id="page-logo" class="position-absolute fa-solid fa-carrot ms-2"></i></div>
     <section class="search-area">
-        <!-- Input Ingredients -->
-        <div class="input-group search-form">
-            <label for="search" class="question-label">What type of clothings are you looking to donate?</label>
-            <br>
+        <!-- Input clothing info -->
+        <form class="input-group search-form" action="/upload-image" method="POST" enctype="multipart/form-data">
+            <label for="search" class="question-label">What are you looking to donate?</label>
             <input type="text" class="form-control rounded" name="search" id="search" placeholder="ex. socks">
-        </div>
-        <!-- CHIPS -->
-        <div id="chips">
-            <!-- chips are dynamically added through input.js-->
-            {% for i in ingredients%}  <!-- re-creates chips after page reset from post request--> 
-            <div class="chip">
-                <span>{{i}}</span>
-                <button class="chip-x" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
-            </div>
-            {% endfor %}
-        </div>
-        <button type="button" id="submit" class="btn btn-primary mb-3">Find clothings!</button>
+            <br>
+            <div class="form-group">
+                      <label>Select image</label>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image" id="image">
+                        <label class="custom-file-label" for="image">Select image...</label>
+                      </div>
+                    </div>
+            <button type="submit" class="btn btn-primary mb-3">Submit Clothing</button>
+        </form>
     </section>
 </div>
 {% endblock %}
