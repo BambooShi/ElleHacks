@@ -33,7 +33,7 @@ def root():
 def browse():
     return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
-@app.route("/account")
+@app.route("/user")
 def account():
     return render_template("user.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
