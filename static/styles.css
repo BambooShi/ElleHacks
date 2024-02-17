@@ -66,6 +66,18 @@ input[type="submit"] {
   background-color: #62929E;
 }
 
+/* Nav bar items*/
+.nav-item{
+  background: #C6C5B9;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+.nav-item:active {
+  box-shadow: #4A4E69 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
 .login-button {
   background-color: #ecece7;
   border: 2px solid #374b5c;
