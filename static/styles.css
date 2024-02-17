@@ -57,15 +57,16 @@ input[type="submit"] {
 }
 
 .custom-navbar{
-    height: 80px;
+  height: 80px;
+  background-color: #9A8C98;
 }
 
-.button-74 {
-  background-color: #fbeee0;
-  border: 2px solid #422800;
+.login-button {
+  background-color: #F2E9E4;
+  border: 2px solid #22223B;
   border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
+  box-shadow: #22223B 4px 4px 0 0;
+  color: #22223B;
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
@@ -79,17 +80,17 @@ input[type="submit"] {
   touch-action: manipulation;
 }
 
-.button-74:hover {
+.login-button:hover {
   background-color: #fff;
 }
 
-.button-74:active {
-  box-shadow: #422800 2px 2px 0 0;
+.login-button:active {
+  box-shadow: #4A4E69 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 
 @media (min-width: 768px) {
-  .button-74 {
+  .login-button {
     min-width: 120px;
     padding: 0 25px;
   }
