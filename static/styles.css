@@ -5,7 +5,7 @@ h1, h2, p, label, input {
 }
 
 body {
-	background: #ffd5a5;
+	background: #f8078c;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,17 +56,22 @@ input[type="submit"] {
   padding-top: 10%;
 }
 
+/* Page background colour*/
+.ly-bg{
+  background-color: #dcdbd0;
+}
+
 .custom-navbar{
   height: 80px;
-  background-color: #9A8C98;
+  background-color: #62929E;
 }
 
 .login-button {
-  background-color: #F2E9E4;
-  border: 2px solid #22223B;
+  background-color: #ecece7;
+  border: 2px solid #374b5c;
   border-radius: 30px;
-  box-shadow: #22223B 4px 4px 0 0;
-  color: #22223B;
+  box-shadow: #374b5c 4px 4px 0 0;
+  color: #374b5c;
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
@@ -94,4 +99,5 @@ input[type="submit"] {
     min-width: 120px;
     padding: 0 25px;
   }
+
 }
