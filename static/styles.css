@@ -5,7 +5,7 @@ h1, h2, p, label, input {
 }
 
 body {
-	background: #ffd5a5;
+	background: #f8078c;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,13 +56,18 @@ input[type="submit"] {
   padding-top: 10%;
 }
 
+/* Page background colour*/
+.ly-bg{
+  background-color: #dcdbd0;
+}
+
 .custom-navbar{
   height: 80px;
-  background-color: #C6C5B9;
+  background-color: #62929E;
 }
 
 .login-button {
-  background-color: #C6C5B9;
+  background-color: #ecece7;
   border: 2px solid #374b5c;
   border-radius: 30px;
   box-shadow: #374b5c 4px 4px 0 0;
@@ -81,7 +86,7 @@ input[type="submit"] {
 }
 
 .login-button:hover {
-  background-color: #dfded5;
+  background-color: #fff;
 }
 
 .login-button:active {
@@ -95,15 +100,4 @@ input[type="submit"] {
     padding: 0 25px;
   }
 
-.btn-colour{
-  background-color: #62929E;
-  border: none;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  display: inline-block;
-  border-radius: 8px;
-}
 }
