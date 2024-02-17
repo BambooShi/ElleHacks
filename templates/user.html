@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- uncomment this line when you're done to make the todo list look a little nicer -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
-    <title>Account</title>
-</head>
-<body>
-    {% if session %}
-        <h1>Account: {{session.userinfo.name}}!</h1>
-        <div><pre>{{session.userinfo | tojson(indent=4)}}</pre></div>
-        <div class="navbar">
-            <a href="/">Home</a>
-            <a href="/account">account</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-            <a href="/logout">Logout</a>
-        </div>
-        <div><pre>{{session.userinfo | tojson(indent=4)}}</pre></div>
-    {% else %}
-        <h1>Please login to access your account.</h1>
-        <a href="/login" class="custom-button">Login</a>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} WarmthConnect {% endblock %}
+
+{% block content %}
+    <div>
+        <p>User Account Page or something like that here :3</p>
+    </div>
+{% endblock %}
