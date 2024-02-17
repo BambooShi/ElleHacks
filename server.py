@@ -33,9 +33,9 @@ def root():
 def browse():
     return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
-@app.route("/about")
+@app.route("/donate")
 def about():
-    return render_template("about.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+    return render_template("donate.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
 @app.route("/user")
 def account():
