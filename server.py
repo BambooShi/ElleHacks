@@ -1,16 +1,18 @@
 import json
+import os
 from os import environ as env
 from urllib.parse import quote_plus, urlencode
 
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
-from flask import Flask, redirect, render_template, session, url_for
+from flask import Flask, redirect, render_template, session, url_for, request
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
 
 app = Flask(__name__)
+app.config["IMAGE_UPLOADS"] = "C:/Flask/Upload/"
 app.secret_key = env.get("APP_SECRET_KEY")
 
 oauth = OAuth(app)
@@ -33,9 +35,9 @@ def root():
 def browse():
     return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
-@app.route("/about")
+@app.route("/donate")
 def about():
-    return render_template("about.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+    return render_template("donate.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
 @app.route("/user")
 def account():
@@ -68,6 +70,20 @@ def logout():
         )
     )
 
+@app.route('/upload-image', methods=['GET', 'POST'])
+def upload_image():
+    if request.method == "POST":
+        if request.files:
+            image = request.files["image"]
+            image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
+            return render_template("upload_image.html", uploaded_image=image.filename)
+    return render_template("upload_image.html")
+
+
+@app.route('/uploads/<filename>')
+def send_uploaded_file(filename=''):
+    from flask import send_from_directory
+    return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=env.get("PORT", 3000))
