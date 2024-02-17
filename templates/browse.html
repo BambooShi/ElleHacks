@@ -3,7 +3,7 @@
 {% block title %} Browse {% endblock %}
 
 {% block navlinks %} 
-{% if user.is_authenticated %}
+{% if session %}
 <a href="/">Home</a>
 <a href="#about">About</a>
 <a href="#browse">Browse</a>
