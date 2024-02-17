@@ -2,42 +2,6 @@
 
 {% block title %} Browse {% endblock %}
 
-{% block navlinks %} 
-{% if session %}
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#about">About</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#browse">Browse</a>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          User
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="/account">Account</a></li>
-          <li><a class="dropdown-item" href="/logout">Logout</a></li>
-        </ul>
-    </li>
-{% else %}
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#about">About</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#browse">Browse</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/login">Login/Sign Up</a>
-    </li>
-{% endif %}
-{% endblock %}
-
 {% block content %}
 <div class="welcome">Welcome!<i id="page-logo" class="position-absolute fa-solid fa-carrot ms-2"></i></div>
     <section class="search-area">
@@ -60,4 +24,28 @@
         <button type="button" id="submit" class="btn btn-primary mb-3">Find clothings!</button>
     </section>
 </div>
+
+<!-- <div class="welcome">Welcome!<i id="page-logo" class="position-absolute fa-solid fa-carrot ms-2"></i></div> -->
+    
+    <!-- <section class="container">
+
+        <div class="input-group search-form">
+            <label for="search" class="question-label">What type of clothings are you looking for?</label>
+            <br>
+            <input type="text" class="form-control rounded" name="search" id="search" placeholder="ex. socks">
+            <div class="ms-2">
+                <button type="button" id="add-ingredient" class="btn btn-success">Add information</button>
+            </div>
+        </div>
+
+        <div id="chips">
+            {% for i in ingredients%} 
+            <div class="chip">
+                <span>{{i}}</span>
+                <button class="chip-x" aria-label="Remove tag"><i class="fa-solid fa-x fa-xs"></i></button>
+            </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="submit" class="btn btn-primary mb-3">Find clothings!</button>
+    </section> -->
 {% endblock %}
