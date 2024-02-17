@@ -3,12 +3,9 @@
 {% block title %} User Profile {% endblock %}
 
 {% block content %}
-    <header>
-        <h1>User Profile</h1>
-    </header>
     <main>
         <section>
-            <h2>Welcome, {{session.userinfo.name}}</h2>
+            <h2>User, {{session.userinfo.name}}</h2>
             <!-- Display other user information as needed -->
             <p>Email: {{session.userinfo.email }}</p>
             <p>Picture: <img src="{{session.userinfo.picture}}" alt="User Profile"></p>
