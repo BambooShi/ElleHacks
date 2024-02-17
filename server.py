@@ -33,6 +33,10 @@ def root():
 def browse():
     return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
+@app.route("/about")
+def about():
+    return render_template("about.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+
 @app.route("/user")
 def account():
     return render_template("user.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
