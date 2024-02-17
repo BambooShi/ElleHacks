@@ -3,13 +3,27 @@
 {% block title %} User Profile {% endblock %}
 
 {% block content %}
-    <main>
-        <section>
-            <h2>User, {{session.userinfo.name}}</h2>
-            <!-- Display other user information as needed -->
-            <p>Email: {{session.userinfo.email }}</p>
-            <p>Picture: <img src="{{session.userinfo.picture}}" alt="User Profile"></p>
-            <!-- Add more user information fields as needed -->
-        </section>
-    </main>
+    <!-- <div class="card">
+            <p>Email: {{session.userinfo.email}}</p>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <img src="{{session.userinfo.picture}}" class="rounded-circle mb-3" style="width: 100px;" alt="Avatar">
+                <h5 class="mb-2"><strong>{{session.userinfo.name}}</strong></h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card" style="width: 45rem; height: 10rem;">
+            <h5 class="card-header">Info</h5>
+            <div class="card-body">
+              <p class="card-text">Email: {{session.userinfo.email}}</p>
+              <a href="#" class="btn btn-primary">Change email</a>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}
