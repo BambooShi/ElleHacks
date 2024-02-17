@@ -54,22 +54,22 @@ input[type="submit"] {
 }
 
 .navbar {
-    background-color: #3e64b4; /* Set the background color of the navbar */
+    background-color: #bb672f; /* Set the background color of the navbar */
     overflow: hidden;
-    border-color: black; 
+    border-color: rgb(75, 26, 0); 
     border-radius: 5px;
 }
 
 .navbar a {
     float: left;
     display: block;
-    color: #c4f3ff; /* Set the text color of the links */
+    color: #644519; /* Set the text color of the links */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .navbar a:hover {
-    background-color: #c4f3ff; /* Set the background color on hover */
-    color: black; /* Set the text color on hover */
+    background-color: #ffb62f; /* Set the background color on hover */
+    color: rgb(75, 26, 0); /* Set the text color on hover */
 }
