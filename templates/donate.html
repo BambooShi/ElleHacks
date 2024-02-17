@@ -3,11 +3,11 @@
 {% block title %} About {% endblock %}
 
 {% block content %}
-<div class="welcome">Welcome!<i id="page-logo" class="position-absolute fa-solid fa-carrot ms-2"></i></div>
+<div class="welcome">Welcome!<i class="fa fa-snowflake-o"></i></div>
     <section class="search-area">
         <!-- Input clothing info -->
-        <form class="input-group search-form" action="/upload-image" method="POST" enctype="multipart/form-data">
-            <label for="search" class="question-label">What are you looking to donate?</label><br>
+        <form class=" search-form" action="/upload-image" method="POST" enctype="multipart/form-data">
+            <label for="search" class="question-label">What are you looking to donate?</label>
             <input type="text" class="form-control rounded" name="search" id="search" placeholder="ex. socks">
             <br><br>
             <div class="form-group">
@@ -17,7 +17,7 @@
                         <label class="custom-file-label" for="image">Select image...</label>
                       </div>
                     </div>
-            <button type="submit" class="btn btn-primary mb-3">Submit Clothing</button>
+            <button type="submit" class="login-button">Submit Clothing</button>
         </form>
     </section>
 </div>
