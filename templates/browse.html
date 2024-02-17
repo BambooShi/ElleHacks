@@ -1,7 +1,24 @@
-{% extends 'templates/base.html' %}
-{% set page_title = 'Search' %}
-{% block body %}
-    <div>
-        {{ render_form(url_for('search'), form) }} # note: render_form is some marco from another .html file
-    </div>
+{% extends "base.html" %}
+
+{% block title %} Browse {% endblock %}
+
+{% block navlinks %} 
+{% if user.is_authenticated %}
+<a href="/">Home</a>
+<a href="#about">About</a>
+<a href="#browse">Browse</a>
+<a href="/account">Account</a>
+<a href="#contact">Contact</a>
+<a href="/logout">Logout</a>
+{% else %}
+<a href="/">Home</a>
+<a href="#about">About</a>
+<a href="#browse">Browse</a>
+<a href="#contact">Contact</a>
+<a href="/login">Login/Sign Up</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
 {% endblock %}
