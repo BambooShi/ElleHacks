@@ -21,6 +21,8 @@
     function findClothings() {
         var selectedClothing = document.getElementById("clothing_id").value;
 
+        console.log("Selected Clothing:", selectedClothing);
+
         // Make an AJAX request to the server to get images based on the selected clothing
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
