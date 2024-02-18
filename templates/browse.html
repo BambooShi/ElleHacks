@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="welcome row justify-content-center">Welcome!<i class="fa fa-snowflake-o"></i></div>
-    <form class="search-area">
+    <form class="search-area" action="/browse" method="post">
         <!-- Input Ingredients -->
         <div class="search-form ">
             <label for="search" class="question-label pr-10">What type of clothings are you looking for?</label>
@@ -23,16 +23,18 @@
 <!--display search results-->
 <div id="results" class="results">
     {% for j in clothes %}
+    {% if  j[1] == category %}
     <div class="card mb-2 shadow">
         <div class="card-body">
             <h1>{{j[1]}}</h1>
             <hr>
             <!--image-->
             <div class="ms-4">
-                <img src="{{ url_for('display_image', filename='uploads/{{j[0]}}') }}">
+                <img src="{{ url_for('display_image', filename='{{j[0]}}') }}">
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
     <!-- No recipes found -->
     {% if query and not clothes%}

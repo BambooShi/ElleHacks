@@ -47,17 +47,14 @@ def root():
 
 @app.route("/browse")
 def browse():
-    # category = request.form['clothing_id']
-    # data_received = []
-    data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
+    category = request.form('clothing_id')
     
-    # for item in data:
-    #     if item[1] == category:
-    #         data_received.append(item)
+    
+    data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
 
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     
-    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data)
+    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data, category = category)
 
 
 @app.route("/donate")
