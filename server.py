@@ -3,6 +3,7 @@ import os
 from os import environ as env
 import urllib.parse
 from urllib.parse import quote_plus, urlencode
+import uuid
 
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
@@ -35,12 +36,28 @@ oauth.register(
 def root():
     return render_template("index.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
-@app.route("/browse")
+@app.route("/browse", method=["GET"])
 def browse():
-    category = request.form.get('clothing_id')
-    data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
+    # category = request.form['clothing_id']
+    # data_received = []
+    # data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
+    # for item in data:
+    #     if item[1] == category:
+    #         data_received.append(item)
+
+    try:
+        category = request.args['clothing_id']
+    except KeyError:
+        # Handle the case when 'clothing_id' is not present in the request
+        return "Bad Request: 'clothing_id' parameter is missing", 400
+
+    upload_folder = "\uploads"
+    category_folder = os.path.join(upload_folder, category)
+    files = os.listdir(category_folder)
+
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
-    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data, category = category)
+    
+    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data)
 
 
 @app.route("/donate")
@@ -91,11 +108,19 @@ def upload_file():
         # Save the uploaded file to the UPLOAD_FOLDER
         selected_file = request.form['file-upload']
         if selected_file in droplst:
-            selected_file = secure_filename(selected_file)
-            filename = file.filename
-            filename = filename.replace('%20', '_')
-            new_filename = selected_file + filename
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
+            # selected_file = secure_filename(selected_file)
+            filename = secure_filename(file.filename)
+            
+            if '.' not in file.filename:
+                filename = filename + '.jpg'  # You can modify the extension as needed
+
+            new_filename = str(uuid.uuid4()) + secure_filename(file.filename) 
+            # Create a subfolder with the same name as the ID if it doesn't exist
+            subfolder_path = os.path.join(app.config['UPLOAD_FOLDER'], selected_file)
+            os.makedirs(subfolder_path, exist_ok=True)
+            
+            # Save the file into the subfolder
+            file.save(os.path.join(subfolder_path, new_filename))
 
             # Rename the file
             # os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], filename))

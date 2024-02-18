@@ -3,15 +3,28 @@
 {% block title %} WarmthConnect {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center align-items-center">
-    {% if session %}
-        <h1>Welcome {{session.userinfo.name}}!</h1>
-        <main>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat libero eget magna commodo, quis pharetra tellus pretium. Sed viverra ante in mauris finibus dapibus. Maecenas congue dapibus nulla, eu gravida orci consequat eu. Phasellus nec nunc malesuada, aliquam massa ac, accumsan metus. Fusce sed dignissim lectus. Nunc elit tellus, sollicitudin ac accumsan ut, egestas et dui. Maecenas aliquam est a ligula scelerisque, in aliquam neque sodales. Nullam condimentum euismod dictum. Curabitur non ex elementum, pretium enim ut, ornare ipsum.</p>
-        </main>
-    {% else %}
-        <h1>Welcome Guest. Please login</h1>
-        <a href="/login" class="login-button">Login</a>
-    {% endif %}
+<div class="custom-background-block">
+    <div class="card border-info mb-3 custom-card">
+            <div class="card-body custom-card-body">
+                {% if session %}
+                <h2 class="card-text custom-card-body">Welcome, {{session.userinfo.name}}, to Warmth Connect!</h2>
+                <p class="card-text custom-card-body">
+                    At Warmth Connect, we believe in the power of kindness 
+                    and the warmth it brings to the world. Our platform is 
+                    a space where generosity meets compassion, where individuals 
+                    come together to make a positive impact. Whether you're looking 
+                    to donate, connect with others, or explore a curated collection of 
+                    gently-used winter clothing, you're in the right place. Join us on this journey 
+                    to spread warmth and create a world where every act of kindness matters and 
+                    where a simple discartion of old cloth can be the guiding light in someone 
+                    else's life.
+                </p>
+                {% else %}
+                <h1 class="card-text custom-card-body">Welcome Guest. Please login</h1>
+                <a href="/login" class="login-button card-text">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
