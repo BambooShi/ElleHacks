@@ -46,7 +46,7 @@ input[type="submit"] {
 
 /* Page background colour*/
 .ly-bg{
-  background-color: #dcdbd0;
+  background-color: #e2e1d6;
 }
 
 .custom-navbar{
@@ -110,38 +110,53 @@ img{
   box-shadow: #4A4E69 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
-
 .overlay {
-    display: none;
-    position: fixed;
-    top:0;
-    left: 4%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    justify-content:center;
-    align-items: center;
-} 
-
-/* Styles for the popup */
-.popup {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    justify-content: center;
-    padding-right: 20px;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    cursor: pointer;
-    padding-left: 15px
+/* Style for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+
+/* Nav bar items */
+.nav-item {
+  padding: 0px;
+  margin: 5px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: #374b5c 3px 3px 0 0;
+  touch-action: manipulation;
+}
+
+.nav-item:active {
+  box-shadow: #4A4E69 2px 2px 0 0;
+  transform: translate(1.5px, 1.5px);
+}
+
+.nav-item.active {
+  background: #374b5c;
+  margin: 5px;
+  border-radius: 8px;
 }
 
 .login-button {
-  background-color: #ecece7;
+  background-color: #fff;
   border: 2px solid #374b5c;
   border-radius: 30px;
   box-shadow: #374b5c 4px 4px 0 0;
@@ -160,7 +175,7 @@ img{
 }
 
 .login-button:hover {
-  background-color: #fff;
+  background-color: #f4f4ed;
 }
 
 .login-button:active {
