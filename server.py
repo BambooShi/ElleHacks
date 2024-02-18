@@ -118,7 +118,7 @@ def upload_file():
             # Rename the file
             # os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        return render_template('donate.html', filename=file.filename, droplst=droplst)
+        return render_template('donate.html', filename=new_filename, droplst=droplst)
 
 
 @app.route('/uploads/<filename>')
