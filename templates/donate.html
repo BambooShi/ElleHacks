@@ -9,7 +9,7 @@
     <div class="form-container">
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="search" class="question-label">What are you looking to donate today?</label>
-            <select id="clothing-select">
+            <select id="clothing-select" name="file-upload"> <!-- Added name attribute -->
                 {% for clothing in droplst %}
                 <option value="{{ clothing }}">{{ clothing }}</option>
                 {% endfor %}
@@ -21,7 +21,8 @@
                     <i class="fa fa-cloud-upload"></i> Choose File
                 </label>
                 <input id="file-upload" type="file" name="file" accept="image/*" style="display: none;">
-                <input type="submit" class="btn login-button" value="Upload">
+                <input type="submit" class="btn login-button" value="Upload"> <!-- Moved inside the form -->
+                <button type="button" class="confirm-button" id="Confirm">Confirm</button> <!-- Moved inside the form -->
             </div>
         </form>
     </div>
@@ -32,27 +33,4 @@
         {% endif %}
     </div>
 </div><br>
-<button type="submit" class="confirm-button" id="Confirm" onclick="openPopup()">Confirm</button>
-
-<div id="overlay" class="overlay">
-    <!-- The popup content -->
-    <div id="popup" class="popup">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-        <h2>Donation successful!</h2>
-        <p>Thank you for your kindness!<i class="fa-regular fa-heart"></i></p>
-        <button class="login-button" onclick="closePopup()">Close</button>
-    </div>
-</div>
-
-<script>
-    // Function to open the popup
-    function openPopup() {
-        document.getElementById("overlay").style.display = "flex";
-    }
-
-    // Function to close the popup
-    function closePopup() {
-        document.getElementById("overlay").style.display = "none";
-    }
-</script>
 {% endblock %}
