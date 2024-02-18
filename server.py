@@ -8,7 +8,7 @@ import uuid
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
 from werkzeug.utils import secure_filename
-from flask import Flask, redirect, render_template, session, url_for, request, send_from_directory
+from flask import Flask, redirect, render_template, session, url_for, request, send_from_directory, jsonify
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -46,7 +46,7 @@ oauth.register(
 def root():
     return render_template("index.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
-@app.route("/browse", method=["GET"])
+@app.route("/browse", methods=["GET"])
 def browse():
     # category = request.form['clothing_id']
     # data_received = []
@@ -55,19 +55,15 @@ def browse():
     #     if item[1] == category:
     #         data_received.append(item)
 
-    try:
-        category = request.args['clothing_id']
-    except KeyError:
-        # Handle the case when 'clothing_id' is not present in the request
-        return "Bad Request: 'clothing_id' parameter is missing", 400
+    # category = request.args.get('selected_clothing')
 
-    upload_folder = "\uploads"
-    category_folder = os.path.join(upload_folder, category)
-    files = os.listdir(category_folder)
+    # upload_folder = r'/uploads/'
+    # category_folder = os.path.join(upload_folder, category)
+    # files = os.listdir(category_folder)
 
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     
-    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=files)
+    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst)
 
 
 @app.route("/donate")
@@ -141,6 +137,18 @@ def upload_file():
 @app.route('/uploads/<filename>')
 def display_image(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+@app.route('/get_images/<category>')
+def get_images(category):
+    folder_path = os.path.join("uploads", category)
+
+    if not os.path.exists(folder_path):
+        return jsonify(images=[])
+
+    files = os.listdir(folder_path)
+    image_files = [file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))]
+
+    return jsonify(images=image_files)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=env.get("PORT", 3000))
