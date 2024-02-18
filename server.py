@@ -15,7 +15,6 @@ if ENV_FILE:
     load_dotenv(ENV_FILE)
 
 app = Flask(__name__)
-# app.config["IMAGE_UPLOADS"] = "C:/Flask/Upload/"
 app.secret_key = env.get("APP_SECRET_KEY")
 
 UPLOAD_FOLDER = 'uploads'
@@ -33,34 +32,12 @@ oauth.register(
     server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
 )
 
-# def search(category):
-#     clothes = {('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')}
-#     lstOfClothes = []
-#     for i in clothes:
-#         if i[1] == category:
-#             lstOfClothes.append(i)
-
-#     return render_template("browse.html", clothes = lstOfClothes)
-
 @app.route("/")
 def root():
     return render_template("index.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
 @app.route("/browse", methods=["GET"])
 def browse():
-    # category = request.form['clothing_id']
-    # data_received = []
-    # data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
-    # for item in data:
-    #     if item[1] == category:
-    #         data_received.append(item)
-
-    # category = request.args.get('selected_clothing')
-
-    # upload_folder = r'/uploads/'
-    # category_folder = os.path.join(upload_folder, category)
-    # files = os.listdir(category_folder)
-
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     
     return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst)
@@ -127,9 +104,6 @@ def upload_file():
             
             # Save the file into the subfolder
             file.save(os.path.join(subfolder_path, new_filename))
-
-            # Rename the file
-            # os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         return render_template('donate.html', filename=file.filename, droplst=droplst)
 
