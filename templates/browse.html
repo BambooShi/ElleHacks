@@ -4,45 +4,46 @@
 
 {% block content %}
 <div class="welcome row justify-content-center">Welcome!<i class="fa fa-snowflake-o"></i></div>
-    <form class="search-area" action="/browse" method="post">
-        <!-- Input Ingredients -->
-        <div class="search-form ">
-            <label for="search" class="question-label pr-10">What type of clothings are you looking for?</label>
-            <select id="clothing_id">
-                {% for clothing in droplst %}
-                <option value="{{ clothing }}">{{ clothing }}</option>
-                {% endfor %}
-            </select>
-            
-            <p><span id="clothing_id"></span></p>
-        </div>
-        <button type="submit" class="login-button">Find clothings!</button>
-    </form>
-</div>
 
-<!--display search results-->
+<form class="search-area" action="/browse" method="get">
+    <!-- Input Ingredients -->
+    <div class="search-form">
+        <label for="clothing_id" class="question-label pr-10">What type of clothing are you looking for?</label>
+        <select id="clothing_id" name="clothing_id"> <!-- Added name attribute for form submission -->
+            {% for clothing in droplst %}
+            <option value="{{ clothing }}">{{ clothing }}</option>
+            {% endfor %}
+        </select>
+        
+        <p><span id="clothing_id"></span></p>
+    </div>
+    <button type="submit" class="login-button">Find clothing!</button>
+</form>
+
+<!-- Display search results -->
 <div id="results" class="results">
     {% for j in clothes %}
-    {% if  j[1] == category %}
+    {% if j[1] == category %}
     <div class="card mb-2 shadow">
         <div class="card-body">
-            <h1>{{j[1]}}</h1>
+            <h1>{{ j[1] }}</h1>
             <hr>
-            <!--image-->
+            <!-- Image -->
             <div class="ms-4">
-                <img src="{{ url_for('display_image', filename='{{j[0]}}') }}">
+                <img src="{{ url_for('display_image', filename=j[0]) }}"> <!-- Removed unnecessary curly braces around j[0] -->
             </div>
         </div>
     </div>
     {% endif %}
     {% endfor %}
-    <!-- No recipes found -->
-    {% if query and not clothes%}
+    <!-- No clothings found -->
+    {% if query and not clothes %}
     <div class="fade-in-div">
         <h5 class="d-block" style="font-weight: bold">Hey&#128075;</h5>
-        <span class="d-block" >We couldn't find any available clothings that satisfies your needs... Try searching for something else with us, and we will provide the best results!</span>    
+        <span class="d-block">We couldn't find any available clothing that satisfies your needs... Try searching for something else with us, and we will provide the best results!</span>    
     </div>
-   {% endif %}
+    {% endif %}
 </div>
+
 
 {% endblock %}

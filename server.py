@@ -14,7 +14,6 @@ if ENV_FILE:
     load_dotenv(ENV_FILE)
 
 app = Flask(__name__)
-# app.config["IMAGE_UPLOADS"] = "C:/Flask/Upload/"
 app.secret_key = env.get("APP_SECRET_KEY")
 
 UPLOAD_FOLDER = 'uploads'
@@ -32,28 +31,15 @@ oauth.register(
     server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
 )
 
-# def search(category):
-#     clothes = {('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')}
-#     lstOfClothes = []
-#     for i in clothes:
-#         if i[1] == category:
-#             lstOfClothes.append(i)
-
-#     return render_template("browse.html", clothes = lstOfClothes)
-
 @app.route("/")
 def root():
     return render_template("index.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
 @app.route("/browse")
 def browse():
-    category = request.form('clothing_id')
-    
-    
+    category = request.form.get('clothing_id')
     data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
-
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
-    
     return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data, category = category)
 
 
@@ -106,12 +92,12 @@ def upload_file():
         selected_file = request.form['file-upload']
         if selected_file in droplst:
             selected_file = secure_filename(selected_file)
-            filename = file.filename
+            filename = secure_filename(file.filename)
             new_filename = selected_file + filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
 
             # Rename the file
-            os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            os.rename(os.path.join(app.config['UPLOAD_FOLDER'], filename), os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
 
         return render_template('donate.html', filename=file.filename, droplst=droplst)
 
