@@ -6,29 +6,16 @@ h1, h2, p, label, input {
 
 body {
 	background: #f8078c;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
-    text-align: center;
-    align-items: center;
-    max-width: 80%; 
+    max-width: 100%; 
     margin: auto;
-    height: 100%;
+    height: auto;
 }
 
 div {
     padding: 15px;
-    margin-bottom: 7px;
-}
-
-.group-label-input {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
+    max-width: 90%;
 }
 
 label {
@@ -54,6 +41,7 @@ input[type="submit"] {
 
 .page{
   padding-top: 10%;
+  padding-left: 15%;
 }
 
 /* Page background colour*/
@@ -66,15 +54,60 @@ input[type="submit"] {
   background-color: #62929E;
 }
 
-/* Nav bar items*/
-.nav-item{
-  border: 1.5px solid #374b5c;
-  margin: 5px;
-  border-radius: 8px;
+img{
+  max-width: 100%;
+  height: auto;
+  text-align: right;
+  display: block; 
+  margin: 0 auto;
 }
 
-.nav-item:active {
-  box-shadow: #374b5c 2px 2px 0 0;
+/* Style for the custom file upload button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Style for the custom file upload button on hover */
+.custom-file-upload:hover {
+  background-color: #45a049;
+}
+
+.form-container {
+  flex: 3; /* Use flexbox to make the form container grow and take up remaining space */
+  padding: 20px; /* Optional: Add padding for spacing */
+}
+
+/* CSS for the image container */
+.image-container {
+  flex: 2; /* Use flexbox to make the image container grow and take up remaining space */
+  padding: 20px; /* Optional: Add padding for spacing */
+}
+
+.confirm-button {
+  background-color: #4CAF50;
+  color: floralwhite;
+  box-shadow: #374b5c 2px 4px 4px 2px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 10%;
+  vertical-align: bottom;
+  margin-top: 100px;
+}
+
+.confirm-button:hover {
+  background-color: #45a049;
+}
+.confirm-button:active {
+  box-shadow: #4A4E69 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 
@@ -118,4 +151,8 @@ input[type="submit"] {
     padding: 0 25px;
   }
 
+}
+
+.pr-10{
+  padding-right: 3%;
 }
