@@ -23,29 +23,29 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     {% if session %}
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/donate' %}active{% endif %}">
                             <a class="nav-link" href="/donate">Donate</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/browse' %}active{% endif %}">
                             <a class="nav-link" href="/browse">Browse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/user">Account</a>
+                            <a class="nav-link {% if request.path == '/user' %}active{% endif %}" href="/user">Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     {% else %}
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/donate' %}active{% endif %}">
                             <a class="nav-link" href="/donate">Donate</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/browse' %}active{% endif %}">
                             <a class="nav-link" href="/browse">Browse</a>
                         </li>
                         <li class="nav-item">
