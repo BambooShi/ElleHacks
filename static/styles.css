@@ -58,7 +58,7 @@ input[type="submit"] {
 
 /* Page background colour*/
 .ly-bg{
-  background-color: #dcdbd0;
+  background-color: #e2e1d6;
 }
 
 .custom-navbar{
@@ -68,14 +68,21 @@ input[type="submit"] {
 
 /* Nav bar items*/
 .nav-item{
-  background: #C6C5B9;
+  border: 1.5px solid #374b5c;
   margin: 5px;
   border-radius: 8px;
 }
 
 .nav-item:active {
-  box-shadow: #4A4E69 2px 2px 0 0;
+  box-shadow: #374b5c 2px 2px 0 0;
   transform: translate(2px, 2px);
+}
+
+.nav-item.active {
+  color: white;
+  background: #374b5c;
+  margin: 5px;
+  border-radius: 8px;
 }
 
 .login-button {
