@@ -111,6 +111,13 @@ img{
   transform: translate(2px, 2px);
 }
 
+.nav-item {
+  padding: 0px;
+  margin: 5px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
 .nav-item.active {
   background: #374b5c;
   margin: 5px;
