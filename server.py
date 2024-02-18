@@ -1,7 +1,6 @@
 import json
 import os
 from os import environ as env
-import urllib.parse
 from urllib.parse import quote_plus, urlencode
 import uuid
 
@@ -32,15 +31,6 @@ oauth.register(
     },
     server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
 )
-
-# def search(category):
-#     clothes = {('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')}
-#     lstOfClothes = []
-#     for i in clothes:
-#         if i[1] == category:
-#             lstOfClothes.append(i)
-
-#     return render_template("browse.html", clothes = lstOfClothes)
 
 @app.route("/")
 def root():
