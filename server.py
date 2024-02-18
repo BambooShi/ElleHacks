@@ -41,7 +41,7 @@ def browse():
 
 @app.route("/donate")
 def about():
-    droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs']
+    droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     return render_template("donate.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst = droplst)
 
 @app.route("/user")
@@ -90,6 +90,14 @@ def upload_file():
 @app.route('/uploads/<filename>')
 def display_image(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+# def stored_info(img_name, category, categories):
+    
+#     for i in categories:
+#         if category == i:
+#             #store into database
+#             pass
+#     return 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=env.get("PORT", 3000))
