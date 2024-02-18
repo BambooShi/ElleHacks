@@ -22,20 +22,18 @@
 
 <!--display search results-->
 <div id="results" class="results">
-    {% if len(clothes) != 0 %}
     {% for j in clothes %}
     <div class="card mb-2 shadow">
         <div class="card-body">
-            <h1>{{i[1]}}</h1>
+            <h1>{{j[1]}}</h1>
             <hr>
             <!--image-->
             <div class="ms-4">
-                <img src="{{ url_for('display_image', filename='uploads/{{i[0]}}') }}">
+                <img src="{{ url_for('display_image', filename='uploads/{{j[0]}}') }}">
             </div>
         </div>
     </div>
     {% endfor %}
-    {% endif %}
     <!-- No recipes found -->
     {% if query and not clothes%}
     <div class="fade-in-div">

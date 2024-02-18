@@ -49,7 +49,7 @@ def root():
 def browse():
     # category = request.form['clothing_id']
     # data_received = []
-    # data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
+    data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
     
     # for item in data:
     #     if item[1] == category:
@@ -57,7 +57,7 @@ def browse():
 
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     
-    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst) #, clothes=data_received
+    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data)
 
 
 @app.route("/donate")
@@ -108,10 +108,8 @@ def upload_file():
         # Save the uploaded file to the UPLOAD_FOLDER
         selected_file = request.form['file-upload']
         if selected_file in droplst:
-            filename = secure_filename(file.filename)
-            # Replace spaces with underscores
-            filename = filename.replace(' ', '_')
-            selected_file = selected_file.replace(' ', '_') 
+            selected_file = secure_filename(selected_file)
+            filename = file.filename
             new_filename = selected_file + filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
 
