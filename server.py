@@ -30,6 +30,17 @@ oauth.register(
     server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
 )
 
+def search(category):
+    clothes = {('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')}
+    lstOfClothes = []
+    for i in clothes:
+        if i[1] == category:
+            lstOfClothes.append(i)
+
+    return render_template("browse,html", clothes = lstOfClothes)
+
+
+
 @app.route("/")
 def root():
     return render_template("index.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
@@ -77,6 +88,7 @@ def logout():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    # clothes = {('a.png', 'Socks'), ('b.png', 'Mittens'), ('c.png', 'Boots'), ('d.png', 'Jacket'), ('e.png', 'Winter Hat')}
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     if 'file' not in request.files:
         return 'No file part'
