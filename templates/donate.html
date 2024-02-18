@@ -34,24 +34,25 @@
 </div><br>
 <button type="submit" class="confirm-button" id="Confirm" onclick="openPopup()">Confirm</button>
 
-<div class="overlay" id="overlay" onclick="closePopup()"></div>
-<div class="modal" id="modal">
-    <h2>Donate successful!</h2>
-    <p>Thank you for your generous help!</p>
-    <button id="Close" onclick="closePopup()">Close</button>
+<div id="overlay" class="overlay">
+    <!-- The popup content -->
+    <div id="popup" class="popup">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Donation successful!</h2>
+        <p>Thank you for your kindness!<i class="fa-regular fa-heart"></i></p>
+        <button class="login-button" onclick="closePopup()">Close</button>
+    </div>
 </div>
 
 <script>
+    // Function to open the popup
     function openPopup() {
-        // Display the overlay and modal
-        document.getElementById("overlay").style.display = "block";
-        document.getElementById("modal").style.display = "block";
+        document.getElementById("overlay").style.display = "flex";
     }
 
+    // Function to close the popup
     function closePopup() {
-        // Hide the overlay and modal
         document.getElementById("overlay").style.display = "none";
-        document.getElementById("modal").style.display = "none";
     }
 </script>
 {% endblock %}
