@@ -79,7 +79,6 @@ input[type="submit"] {
 }
 
 .nav-item.active {
-  color: white;
   background: #374b5c;
   margin: 5px;
   border-radius: 8px;
