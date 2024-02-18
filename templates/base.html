@@ -26,14 +26,14 @@
                         <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item {% if request.path == '/donate' %}active{% endif %}">
+                        <li class="nav-item {% if request.path == '/donate' or request.path == '/uploads' %}active{% endif %}">
                             <a class="nav-link" href="/donate">Donate</a>
                         </li>
                         <li class="nav-item {% if request.path == '/browse' %}active{% endif %}">
                             <a class="nav-link" href="/browse">Browse</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/user' %}active{% endif %}" href="/user">Account</a>
+                        <li class="nav-item {% if request.path == '/user' %}active{% endif %}">
+                            <a class="nav-link" href="/user">Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
@@ -42,7 +42,7 @@
                         <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item {% if (request.path == '/donate' or request.path == '/upload') %}active{% endif %}">
+                        <li class="nav-item {% if request.path == '/donate' or request.path == '/uploads' %} active{% endif %}">
                             <a class="nav-link" href="/donate">Donate</a>
                         </li>
                         <li class="nav-item {% if request.path == '/browse' %}active{% endif %}">
