@@ -32,5 +32,26 @@
         {% endif %}
     </div>
 </div><br>
-<button type="submit" class="confirm-button" id="Confirm">Confirm</button>
+<button type="submit" class="confirm-button" id="Confirm" onclick="openPopup()">Confirm</button>
+
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
+<div class="modal" id="modal">
+    <h2>Donate successful!</h2>
+    <p>Thank you for your generous help!</p>
+    <button id="Close" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+    function openPopup() {
+        // Display the overlay and modal
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("modal").style.display = "block";
+    }
+
+    function closePopup() {
+        // Hide the overlay and modal
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("modal").style.display = "none";
+    }
+</script>
 {% endblock %}
