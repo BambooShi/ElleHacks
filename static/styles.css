@@ -91,8 +91,9 @@ img{
 
 .confirm-button {
   background-color: #4CAF50;
+  position:fixed;
   color: floralwhite;
-  box-shadow: #374b5c 2px 4px 4px 2px;
+  box-shadow: #374b5c 1px 2px 2px 1px;
   cursor: pointer;
   font-weight: 600;
   font-size: 18px;
@@ -101,13 +102,15 @@ img{
   border-radius: 10%;
   vertical-align: bottom;
   margin-top: 100px;
+  margin-left: 30px;
+  
 }
 
 .confirm-button:hover {
   background-color: #45a049;
 }
 .confirm-button:active {
-  box-shadow: #4A4E69 2px 2px 0 0;
+  box-shadow: #4A4E69 1px 1px 0 0;
   transform: translate(2px, 2px);
 }
 
@@ -155,5 +158,5 @@ img{
 }
 
 .pr-10{
-  padding-right: 3%;
+  padding-right: 5%;
 }

@@ -30,16 +30,14 @@ oauth.register(
     server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
 )
 
-def search(category):
-    clothes = {('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')}
-    lstOfClothes = []
-    for i in clothes:
-        if i[1] == category:
-            lstOfClothes.append(i)
+# def search(category):
+#     clothes = {('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')}
+#     lstOfClothes = []
+#     for i in clothes:
+#         if i[1] == category:
+#             lstOfClothes.append(i)
 
-    return render_template("browse,html", clothes = lstOfClothes)
-
-
+#     return render_template("browse.html", clothes = lstOfClothes)
 
 @app.route("/")
 def root():
@@ -47,8 +45,18 @@ def root():
 
 @app.route("/browse")
 def browse():
+    category = request.form['clothing_id']
+    data_received = []
+    data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
+    
+    for item in data:
+        if item[1] == category:
+            data_received.append(item)
+
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
-    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst = droplst)
+    
+    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data_received)
+
 
 @app.route("/donate")
 def about():
