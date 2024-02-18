@@ -23,7 +23,7 @@ div {
     background-repeat: no-repeat;
     height: 300px; /* Adjust the height as needed */
     width: 1000px auto;
-    left: 10%;
+    left: 15%;
     color: #0a154b; /* Text color on top of the background */
     text-align: center;
     padding: 20px;
@@ -38,8 +38,13 @@ div {
 }
 
 .custom-card-body { 
-    left: 200px; /* Center the card body horizontally */
-    padding-left: 30px
+    left: 300px; /* Center the card body horizontally */
+    padding-left: 35px;
+}
+
+.custom-user-card {
+    left: 20%; /* Center the card body horizontally */
+    padding-left: 40px;
 }
 
 label {
