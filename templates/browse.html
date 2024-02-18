@@ -4,46 +4,63 @@
 
 {% block content %}
 <div class="welcome row justify-content-center">Welcome!<i class="fa fa-snowflake-o"></i></div>
-
-<form class="search-area" action="/browse" method="post">
-    <!-- Input Ingredients -->
-    <div class="search-form">
-        <label for="clothing_id" class="question-label pr-10">What type of clothing are you looking for?</label>
-        <select id="clothing_id" name="clothing_id"> <!-- Added name attribute for form submission -->
+<div class="search-area">
+        <label for="search" class="question-label pr-10">What type of clothings are you looking for?</label>
+        <select id="clothing_id" name="selected_clothing">
             {% for clothing in droplst %}
-            <option value="{{ clothing }}">{{ clothing }}</option>
+                <option value="{{ clothing }}">{{ clothing }}</option>
             {% endfor %}
         </select>
-        
         <p><span id="clothing_id"></span></p>
-    </div>
-    <button type="submit" class="login-button">Find clothing!</button>
-</form>
+    <button type="button" class="login-button" onclick="findClothings()">Find clothings!</button>
+</div>
+
+<div id="results-container" data-selected-clothing=""></div>
+
+<script>
+    function findClothings() {
+        var selectedClothing = document.getElementById("clothing_id").value;
+
+        console.log("Selected Clothing:", selectedClothing);
+
+        // Make an AJAX request to the server to get images based on the selected clothing
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                updateResults(response.images, selectedClothing);
+            }
+        };
+        xhr.open("GET", "/get_images/" + selectedClothing, true);
+        xhr.send();
+    }
+
+    function updateResults(imageFiles, selectedClothing) {
+        var resultsContainer = document.getElementById("results");
+        resultsContainer.innerHTML = ""; // Clear previous results
+
+        // Create and append cards for each image
+        imageFiles.forEach(function (imageName) {
+            var cardDiv = document.createElement("div");
+            cardDiv.className = "card mb-2 shadow";
+            cardDiv.innerHTML = `
+                <div class="card-body">
+                    <h1>${selectedClothing}</h1>
+                    <hr>
+                    <!-- Image -->
+                    <div class="ms-4">
+                        <img src="/uploads/${selectedClothing}/${imageName}">
+                    </div>
+                </div>
+            `;
+            resultsContainer.appendChild(cardDiv);
+        });
+    }
+</script> 
 
 <!-- Display search results -->
 <div id="results" class="results">
-    {% for j in clothes %}
-    {% if j[1] == category %}
-    <div class="card mb-2 shadow">
-        <div class="card-body">
-            <h1>{{ j[1] }}</h1>
-            <hr>
-            <!-- Image -->
-            <div class="ms-4">
-                <img src="{{ url_for('display_image', filename=j[0]) }}"> <!-- Removed unnecessary curly braces around j[0] -->
-            </div>
-        </div>
-    </div>
-    {% endif %}
-    {% endfor %}
-    <!-- No clothings found -->
-    {% if query and not clothes %}
-    <div class="fade-in-div">
-        <h5 class="d-block" style="font-weight: bold">Hey&#128075;</h5>
-        <span class="d-block">We couldn't find any available clothing that satisfies your needs... Try searching for something else with us, and we will provide the best results!</span>    
-    </div>
-    {% endif %}
+
 </div>
-
-
+    
 {% endblock %}
