@@ -133,7 +133,7 @@ img{
 }
 
 .login-button {
-  background-color: #ecece7;
+  background-color: #fff;
   border: 2px solid #374b5c;
   border-radius: 30px;
   box-shadow: #374b5c 4px 4px 0 0;
@@ -152,7 +152,7 @@ img{
 }
 
 .login-button:hover {
-  background-color: #fff;
+  background-color: #f4f4ed;
 }
 
 .login-button:active {
