@@ -93,6 +93,7 @@ def upload_file():
         if selected_file in droplst:
             selected_file = secure_filename(selected_file)
             filename = file.filename
+            filename = filename.replace('%20', '_')
             new_filename = selected_file + filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
 
