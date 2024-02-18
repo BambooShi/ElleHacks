@@ -36,11 +36,13 @@ def root():
 
 @app.route("/browse")
 def browse():
-    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+    droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
+    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst = droplst)
 
 @app.route("/donate")
 def about():
-    return render_template("donate.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+    droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs']
+    return render_template("donate.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst = droplst)
 
 @app.route("/user")
 def account():
@@ -72,21 +74,6 @@ def logout():
             quote_via=quote_plus,
         )
     )
-
-# @app.route('/upload-image', methods=['GET', 'POST'])
-# def upload_image():
-#     if request.method == "POST":
-#         if request.files:
-#             image = request.files["image"]
-#             image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
-#             return render_template("upload_image.html", uploaded_image=image.filename)
-#     return render_template("upload_image.html")
-
-
-# @app.route('/uploads/<filename>')
-# def send_uploaded_file(filename=''):
-#     from flask import send_from_directory
-#     return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():

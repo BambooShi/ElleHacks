@@ -8,8 +8,13 @@
         <!-- Input Ingredients -->
         <div class="input-group search-form">
             <label for="search" class="question-label">What type of clothings are you looking for?</label>
-            <br>
-            <input type="text" class="form-control rounded" name="search" id="search" placeholder="ex. socks">
+            <select id="clothing-select">
+                {% for clothing in droplst %}
+                <option value="{{ clothing }}">{{ clothing }}</option>
+                {% endfor %}
+            </select>
+            
+            <p><span id="clothing-fruit"></span></p>
         </div>
         <!-- CHIPS -->
         <div id="chips">

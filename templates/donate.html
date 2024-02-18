@@ -9,7 +9,13 @@
     <div class="form-container">
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="search" class="question-label">What are you looking to donate today?</label>
-            <input type="text" class="form-control rounded" name="search" id="search" placeholder="ex. socks">
+            <select id="clothing-select">
+                {% for clothing in droplst %}
+                <option value="{{ clothing }}">{{ clothing }}</option>
+                {% endfor %}
+            </select>
+            
+            <p><span id="clothing-fruit"></span></p>
             <div>
                 <label>Select image</label>
                 <label for="file-upload" class="custom-file-upload">
