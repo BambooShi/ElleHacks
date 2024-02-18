@@ -17,7 +17,6 @@
             
             <p><span id="clothing-fruit"></span></p>
             <div>
-                <label>Select image</label>
                 <label for="file-upload" class="custom-file-upload">
                     <i class="fa fa-cloud-upload"></i> Choose File
                 </label>
@@ -32,5 +31,6 @@
         <img src="{{ url_for('display_image', filename=filename) }}" alt="Uploaded Image">
         {% endif %}
     </div>
-</div>
+</div><br>
+<button type="submit" class="confirm-button" id="Confirm">Confirm</button>
 {% endblock %}

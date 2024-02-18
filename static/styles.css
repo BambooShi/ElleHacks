@@ -8,9 +8,9 @@ body {
 	background: #f8078c;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
-    max-width: 80%; 
+    max-width: 100%; 
     margin: auto;
-    height: 100%;
+    height: auto;
 }
 
 div {
@@ -41,6 +41,7 @@ input[type="submit"] {
 
 .page{
   padding-top: 10%;
+  padding-left: 15%;
 }
 
 /* Page background colour*/
@@ -86,6 +87,28 @@ img{
 .image-container {
   flex: 2; /* Use flexbox to make the image container grow and take up remaining space */
   padding: 20px; /* Optional: Add padding for spacing */
+}
+
+.confirm-button {
+  background-color: #4CAF50;
+  color: floralwhite;
+  box-shadow: #374b5c 2px 4px 4px 2px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 10%;
+  vertical-align: bottom;
+  margin-top: 100px;
+}
+
+.confirm-button:hover {
+  background-color: #45a049;
+}
+.confirm-button:active {
+  box-shadow: #4A4E69 2px 2px 0 0;
+  transform: translate(2px, 2px);
 }
 
 .login-button {

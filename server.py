@@ -77,6 +77,7 @@ def logout():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     if 'file' not in request.files:
         return 'No file part'
     file = request.files['file']
@@ -85,7 +86,7 @@ def upload_file():
     if file:
         # Save the uploaded file to the UPLOAD_FOLDER
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-        return render_template('donate.html', filename=file.filename)
+        return render_template('donate.html', filename=file.filename, droplst = droplst)
 
 @app.route('/uploads/<filename>')
 def display_image(filename):
