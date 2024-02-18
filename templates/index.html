@@ -3,12 +3,12 @@
 {% block title %} WarmthConnect {% endblock %}
 
 {% block content %}
-<div>
-    <div class="row justify-content-center align-items-center">
-        {% if session %}
-            <h1>Welcome, {{session.userinfo.name}}, to Warmth Connect!</h1>
-            <main>
-                <p>
+<div class="custom-background-block">
+    <div class="card border-info mb-3 custom-card">
+            <div class="card-body custom-card-body">
+                {% if session %}
+                <h2 class="card-text custom-card-body">Welcome, {{session.userinfo.name}}, to Warmth Connect!</h2>
+                <p class="card-text custom-card-body">
                     At Warmth Connect, we believe in the power of kindness 
                     and the warmth it brings to the world. Our platform is 
                     a space where generosity meets compassion, where individuals 
@@ -19,11 +19,12 @@
                     where a simple discartion of old cloth can be the guiding light in someone 
                     else's life.
                 </p>
-            </main>
-        {% else %}
-            <h1>Welcome Guest. Please login</h1>
-            <a href="/login" class="login-button">Login</a>
-        {% endif %}
+                {% else %}
+                <h1>Welcome Guest. Please login</h1>
+                <a href="/login" class="login-button">Login</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
