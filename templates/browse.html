@@ -3,10 +3,10 @@
 {% block title %} Browse {% endblock %}
 
 {% block content %}
-<div class="welcome">Welcome!<i class="fa fa-snowflake-o"></i></div>
+<div class="welcome row justify-content-center">Welcome!<i class="fa fa-snowflake-o"></i></div>
     <section class="search-area">
         <!-- Input Ingredients -->
-        <div class="input-group search-form">
+        <div class="input-group search-form ">
             <label for="search" class="question-label">What type of clothings are you looking for?</label>
             <select id="clothing-select">
                 {% for clothing in droplst %}

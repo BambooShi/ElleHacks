@@ -13,6 +13,10 @@ body {
     height: 100%;
 }
 
+div {
+    padding: 15px;
+    max-width: 90%;
+}
 
 label {
     display: flex;
