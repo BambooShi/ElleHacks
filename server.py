@@ -100,10 +100,12 @@ def logout():
 def upload_file():
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     if 'file' not in request.files:
-        return 'No file part'
+        return render_template('donate.html', error="No file selected", droplst=droplst)
+
     file = request.files['file']
     if file.filename == '':
-        return 'No selected file'
+        return render_template('donate.html', error="No file selected", droplst=droplst)
+
     if file:
         # Save the uploaded file to the UPLOAD_FOLDER
         selected_file = request.form['file-upload']

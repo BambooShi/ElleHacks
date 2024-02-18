@@ -4,26 +4,28 @@
 
 {% block content %}
 <div>
-    <div class="row justify-content-center align-items-center">
-        {% if session %}
-            <h1>Welcome, {{session.userinfo.name}}, to Warmth Connect!</h1>
-            <main>
-                <p>
-                    At Warmth Connect, we believe in the power of kindness 
-                    and the warmth it brings to the world. Our platform is 
-                    a space where generosity meets compassion, where individuals 
-                    come together to make a positive impact. Whether you're looking 
-                    to donate, connect with others, or explore a curated collection of 
-                    gently-used winter clothing, you're in the right place. Join us on this journey 
-                    to spread warmth and create a world where every act of kindness matters and 
-                    where a simple discartion of old cloth can be the guiding light in someone 
-                    else's life.
-                </p>
-            </main>
-        {% else %}
-            <h1>Welcome Guest. Please login</h1>
-            <a href="/login" class="login-button">Login</a>
-        {% endif %}
+    <div class="text-center">
+        <div class="row justify-content-center align-items-center">
+            {% if session %}
+                <h1>Welcome, {{session.userinfo.name}}, to Warmth Connect!</h1>
+                <main>
+                    <p>
+                        At Warmth Connect, we believe in the power of kindness 
+                        and the warmth it brings to the world. Our platform is 
+                        a space where generosity meets compassion, where individuals 
+                        come together to make a positive impact. Whether you're looking 
+                        to donate, connect with others, or explore a curated collection of 
+                        gently-used winter clothing, you're in the right place. Join us on this journey 
+                        to spread warmth and create a world where every act of kindness matters and 
+                        where a simple discartion of old cloth can be the guiding light in someone 
+                        else's life.
+                    </p>
+                </main>
+            {% else %}
+                <h1>Welcome Guest. Please login</h1>
+                <a href="/login" class="login-button small">Login</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -21,13 +21,13 @@
                     <i class="fa fa-cloud-upload"></i> Choose File
                 </label>
                 <input id="file-upload" type="file" name="file" accept="image/*" style="display: none;">
-                <input type="submit" class="btn login-button" value="Upload"> <!-- Moved inside the form -->
+                <input type="submit" class="btn btn-white" value="Upload"> <!-- Moved inside the form -->
                 <button type="button" class="confirm-button" id="Confirm">Confirm</button> <!-- Moved inside the form -->
             </div>
         </form>
     </div>
     <!-- Uploaded Image -->
-    <div class="image-container">
+    <div class="image-container" {% if filename %}style="border: 10px solid #374b5c;"{% endif %}>
         {% if filename %}
         <img src="{{ url_for('display_image', filename=filename) }}" alt="Uploaded Image">
         {% endif %}

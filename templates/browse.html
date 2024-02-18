@@ -3,22 +3,21 @@
 {% block title %} Browse {% endblock %}
 
 {% block content %}
-<div class="welcome row justify-content-center">Welcome!<i class="fa fa-snowflake-o"></i></div>
-    <form class="search-area">
-        <!-- Input Ingredients -->
-        <div class="search-form ">
-            <label for="search" class="question-label pr-10">What type of clothings are you looking for?</label>
-            <select id="clothing_id">
-                {% for clothing in droplst %}
-                    <option value="{{ clothing }}">{{ clothing }}</option>
-                {% endfor %}
-            </select>
-            
-            <p><span id="clothing_id"></span></p>
-        </div>
-        <button type="submit" class="login-button">Find clothings!</button>
-    </form>
-</div>
+
+<form class="search-area">
+    <!-- Input Ingredients -->
+    <div class="search-form ">
+        <label for="search" class="question-label pr-10">What type of clothings are you looking for?</label>
+        <select id="clothing_id">
+            {% for clothing in droplst %}
+                <option value="{{ clothing }}">{{ clothing }}</option>
+            {% endfor %}
+        </select>
+        
+        <p><span id="clothing_id"></span></p>
+    </div>
+    <button type="submit" class="login-button">Find clothings!</button>
+</form>
 
 <!--display search results-->
 <div id="results" class="results">
