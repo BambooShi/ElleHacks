@@ -1,6 +1,7 @@
 import json
 import os
 from os import environ as env
+import urllib.parse
 from urllib.parse import quote_plus, urlencode
 
 from authlib.integrations.flask_client import OAuth
@@ -46,17 +47,17 @@ def root():
 
 @app.route("/browse")
 def browse():
-    category = request.form['clothing_id']
-    data_received = []
-    data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
+    # category = request.form['clothing_id']
+    # data_received = []
+    # data = [('a', 'Socks'), ('b', 'Mittens'), ('c', 'Boots'), ('d', 'Jacket'), ('e', 'Winter Hat')]
     
-    for item in data:
-        if item[1] == category:
-            data_received.append(item)
+    # for item in data:
+    #     if item[1] == category:
+    #         data_received.append(item)
 
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     
-    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst, clothes=data_received)
+    return render_template("browse.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), droplst=droplst) #, clothes=data_received
 
 
 @app.route("/donate")
@@ -97,7 +98,6 @@ def logout():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    # clothes = {('a.png', 'Socks'), ('b.png', 'Mittens'), ('c.png', 'Boots'), ('d.png', 'Jacket'), ('e.png', 'Winter Hat')}
     droplst = ['Winter Hat', 'Jacket', 'Snowpants', 'Boots', 'Mittens', 'Gloves', 'Socks', 'Scarfs', 'Ear Muffs', 'Sweater', 'Other']
     if 'file' not in request.files:
         return 'No file part'
@@ -111,12 +111,15 @@ def upload_file():
             filename = secure_filename(file.filename)
             # Replace spaces with underscores
             filename = filename.replace(' ', '_')
+            selected_file = selected_file.replace(' ', '_') 
             new_filename = selected_file + filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
-            os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
 
+            # Rename the file
+            os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        return render_template('donate.html', filename=file.filename, droplst = droplst)
+        return render_template('donate.html', filename=file.filename, droplst=droplst)
+
 
 @app.route('/uploads/<filename>')
 def display_image(filename):
