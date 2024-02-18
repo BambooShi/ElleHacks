@@ -5,6 +5,7 @@ from urllib.parse import quote_plus, urlencode
 
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
+from werkzeug.utils import secure_filename
 from flask import Flask, redirect, render_template, session, url_for, request, send_from_directory
 
 ENV_FILE = find_dotenv()
@@ -105,20 +106,21 @@ def upload_file():
         return 'No selected file'
     if file:
         # Save the uploaded file to the UPLOAD_FOLDER
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        selected_file = request.form['file-upload']
+        if selected_file in droplst:
+            filename = secure_filename(file.filename)
+            # Replace spaces with underscores
+            filename = filename.replace(' ', '_')
+            new_filename = selected_file + filename
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
+            os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
+
+
         return render_template('donate.html', filename=file.filename, droplst = droplst)
 
 @app.route('/uploads/<filename>')
 def display_image(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
-# def stored_info(img_name, category, categories):
-    
-#     for i in categories:
-#         if category == i:
-#             #store into database
-#             pass
-#     return 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=env.get("PORT", 3000))

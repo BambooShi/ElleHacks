@@ -9,7 +9,7 @@
     <div class="form-container">
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="search" class="question-label">What are you looking to donate today?</label>
-            <select id="clothing-select">
+            <select id="clothing-select" name="file-upload"> <!-- Added name attribute -->
                 {% for clothing in droplst %}
                 <option value="{{ clothing }}">{{ clothing }}</option>
                 {% endfor %}
@@ -21,7 +21,8 @@
                     <i class="fa fa-cloud-upload"></i> Choose File
                 </label>
                 <input id="file-upload" type="file" name="file" accept="image/*" style="display: none;">
-                <input type="submit" class="btn login-button" value="Upload">
+                <input type="submit" class="btn login-button" value="Upload"> <!-- Moved inside the form -->
+                <button type="button" class="confirm-button" id="Confirm">Confirm</button> <!-- Moved inside the form -->
             </div>
         </form>
     </div>
@@ -32,5 +33,4 @@
         {% endif %}
     </div>
 </div><br>
-<button type="submit" class="confirm-button" id="Confirm">Confirm</button>
 {% endblock %}
