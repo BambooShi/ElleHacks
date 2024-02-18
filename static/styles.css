@@ -111,11 +111,19 @@ img{
   transform: translate(2px, 2px);
 }
 
+/* Nav bar items */
 .nav-item {
   padding: 0px;
   margin: 5px;
   background-color: #f0f0f0;
   border-radius: 8px;
+  box-shadow: #374b5c 3px 3px 0 0;
+  touch-action: manipulation;
+}
+
+.nav-item:active {
+  box-shadow: #4A4E69 2px 2px 0 0;
+  transform: translate(1.5px, 1.5px);
 }
 
 .nav-item.active {
