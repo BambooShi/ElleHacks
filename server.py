@@ -92,7 +92,7 @@ def upload_file():
         selected_file = request.form['file-upload']
         if selected_file in droplst:
             selected_file = secure_filename(selected_file)
-            filename = secure_filename(file.filename)
+            filename = file.filename
             new_filename = selected_file + filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
 
