@@ -18,8 +18,8 @@ app = Flask(__name__)
 # app.config["IMAGE_UPLOADS"] = "C:/Flask/Upload/"
 app.secret_key = env.get("APP_SECRET_KEY")
 
-UPLOAD_FOLDER = 'uploads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+STATIC_FOLDER = 'static'
+app.config['STATIC_FOLDER'] = STATIC_FOLDER
 
 oauth = OAuth(app)
 
@@ -109,7 +109,7 @@ def upload_file():
 
             new_filename = str(uuid.uuid4()) + secure_filename(file.filename) 
             # Create a subfolder with the same name as the ID if it doesn't exist
-            subfolder_path = os.path.join(app.config['UPLOAD_FOLDER'], selected_file)
+            subfolder_path = os.path.join(app.config['STATIC_FOLDER'], 'uploads', selected_file)
             os.makedirs(subfolder_path, exist_ok=True)
             
             # Save the file into the subfolder
@@ -118,16 +118,16 @@ def upload_file():
             # Rename the file
             # os.rename(os.path.join(app.config['UPLOAD_FOLDER'], new_filename), os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        return render_template('donate.html', filename=new_filename, droplst=droplst)
+        return render_template('donate.html', filename=new_filename, selected_file = selected_file, droplst=droplst)
 
 
 @app.route('/uploads/<filename>')
 def display_image(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    return send_from_directory(app.config['STATIC_FOLDER'], 'uploads', filename)
 
 @app.route('/get_images/<category>')
 def get_images(category):
-    folder_path = os.path.join("uploads", category)
+    folder_path = os.path.join("static", "uploads", category)
 
     if not os.path.exists(folder_path):
         return jsonify(images=[])

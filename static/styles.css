@@ -38,13 +38,13 @@ div {
 }
 
 .custom-card-body { 
-    left: 300px; /* Center the card body horizontally */
-    padding-left: 35px;
+    left: 300px; 
+    padding-left: 35px; 
 }
 
 .custom-user-card {
-    left: 20%; /* Center the card body horizontally */
-    padding-left: 40px;
+    left: 20%; 
+    padding-left: 40px; 
 }
 
 label {
